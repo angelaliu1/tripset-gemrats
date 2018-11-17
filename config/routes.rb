@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
   #DK: added this line manually 11/16/18
   root to: 'home#index'
+  get '/home/index', to: 'users/sessions#new', as: 'get_started'
 end
