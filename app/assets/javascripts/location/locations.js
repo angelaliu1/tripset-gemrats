@@ -1,11 +1,11 @@
 //= require jquery
+<<<<<<< HEAD
 var map, searchBox, geocoder, place;
 //set San Francisco as default location
 var defaultLocation = "San Francisco";
 
 function initMap() {
     geocoder = new google.maps.Geocoder();
-
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12, disableDoubleClickZoom: true
     });
@@ -72,6 +72,25 @@ function initMap() {
       map: map
     });
     map.panTo(latLng);
+  }
+
+  function processPlacesSearch() {
+    var places = searchBox.getPlaces();
+    if (places.length) {
+      location = places[0].geometry.location;
+      var origin = new google.maps.LatLng(location.lat, location.lng);
+      // plot origin
+    }
+  }
+
+  function processButtonSearch(location) {
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode(location, function (data) {
+      var lat = data[0].geometry.location.lat();
+      var lng = data[0].geometry.location.lng();
+      var origin = new google.maps.LatLng(lat, lng);
+      // plot origin
+    });
   }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
