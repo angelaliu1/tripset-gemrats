@@ -40,7 +40,11 @@ gem "paperclip", "~> 6.0.0"
 
 #DK: added manually 11/16/18
 gem 'devise'
-#gem 'concurrent-ruby', '~> 1.1.3'
+#DK: added manually 11/17/18
+gem 'geocoder'
+#DK: added manually 11/18/18
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'rails-ujs', '~> 0.1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
