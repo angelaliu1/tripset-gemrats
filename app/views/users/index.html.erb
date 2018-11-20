@@ -1,0 +1,5 @@
+<h3>Profile</h3>
+<p>Email: <%= @user.email if @user.email %></p>
+<% if @user.id == current_user.id %>
+    <p>Meep</p>
+<% end %>
