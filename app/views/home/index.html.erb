@@ -6,12 +6,15 @@
 
       <div class="container" style="">
         <img src="" style="" width="128" height="128">
-        <p><a class="btn btn-lg btn-success" href="/users/sign_up" role="button">Sign up today</a></p>
-        <p><%= link_to 'Profile', users_path %></p>
 
         <%= button_to "Temporary button to test", show_map_path(), :class => "button medium", :method => :get %>
 
-        <%= button_to "Get started!", new_user_session_path(), :class => "button medium", :method => :get %>
+        <% if user_signed_in? %>
+            <p><%= link_to 'Profile', users_path %></p>
+            <%= button_to('Logout', destroy_user_session_path, method: :delete) %>
+        <% else %>
+          <%= button_to('Login', new_user_session_path)  %>
+        <% end %>
 
       </div>
 

@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get '/home/index', to: 'users/sessions#new', as: 'get_started'
   get '/location/locations', to: 'locations#show_map', as: 'show_map'
   resources :users
+  resources :reviews
 
 end
