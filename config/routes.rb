@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get '/location/locations', to: 'locations#show_map', as: 'show_map'
   resources :users
   resources :reviews
+  post '/location/locations', to: 'locations#save', as: 'save_location'
 
 end

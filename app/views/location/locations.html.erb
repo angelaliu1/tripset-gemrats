@@ -20,15 +20,30 @@
 </head>
 
 <body>
-      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-      <input id="search-button" type="button"></button>
+      <!--<%= hidden_field_tag 'name1' %>-->
+
+      <%= form_tag save_location_path do %>
+          <!-- hidden_field_tag :place, id: "name" %>-->
+          <!--<%= hidden_field_tag 'name' %>-->
+          <%= hidden_field(:location, :name) %>
+          <%= submit_tag "Save", class: "btn btn-large btn-primary" %>
+      <% end %>
+
+      <!--<%= button_to "Save location", save_location_path(), :class => "button medium", :method => :post %>-->
+
+
       <div id="map"></div>
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+
 
       <script>
         //var map;
         //initMap();
       </script>
-      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCWZAP4gaHmcpY04d6dVYmqWg4zwCvRTrY&callback=initMap" async defer></script>
+      <!--<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCWZAP4gaHmcpY04d6dVYmqWg4zwCvRTrY&callback=initMap" async defer></script>-->
+      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBXzcgwL4SR4Pub-rXaTbGifuux-QbKoEA&callback=initMap" async defer></script>
+
 
       <footer class="footer">
         <p>© GemRats 2018</p>
