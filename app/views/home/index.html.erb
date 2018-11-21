@@ -11,7 +11,11 @@
 
         <%= button_to "Temporary button to test", show_map_path(), :class => "button medium", :method => :get %>
 
-        <%= button_to "Get started!", new_user_session_path(), :class => "button medium", :method => :get %>
+        <% if user_signed_in? %>
+          <%= button_to('Logout', destroy_user_session_path, method: :delete) %>
+        <% else %>
+          <%= button_to('Login', new_user_session_path)  %>
+        <% end %>
 
       </div>
 
