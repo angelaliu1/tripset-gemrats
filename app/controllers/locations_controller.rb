@@ -1,4 +1,10 @@
 class LocationsController < ApplicationController
+  #skip_before_action :verify_authenticity_token
+  #respond_to :js, :json, :html
+
+  def index
+
+  end
 
   def new
       @Location = Location.new
