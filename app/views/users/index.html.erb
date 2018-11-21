@@ -1,5 +1,19 @@
 <h3>Profile</h3>
 <% if @user.id == current_user.id %>
     <p>Email: <%= @user.email if @user.email %></p>
-    <p>Meep</p>
+    <p>User ID: <%= @user.id if @user.id %></p>
+    <div class="row">
+    <h3>Reviews</h3>
+    <div class="column">
+      <table class="table">
+        <tbody>
+          <% @reviews.each do |review| %>
+            <tr>
+              <%= render review %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 <% end %>

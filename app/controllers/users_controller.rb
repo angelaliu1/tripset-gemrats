@@ -3,6 +3,6 @@ class UsersController < ApplicationController
 
     def index
         @user = User.find(current_user.id)
+        @reviews = Review.all # where(user_id: @user.id)
     end
-
 end
