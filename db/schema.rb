@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2018_11_22_072019) do
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "routes", force: :cascade do |t|
