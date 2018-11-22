@@ -3,7 +3,10 @@ class LocationsController < ApplicationController
   #respond_to :js, :json, :html
 
   def index
+  end
 
+  def new
+      @Location = Location.new
   end
 
   def show_map
@@ -14,21 +17,31 @@ class LocationsController < ApplicationController
     render '/location/locations'
   end
 
-  def save
-    name = params[:name]
-    #latitude = params[:latitude]
-    #longitude = params[:longitude]
-    #@location = Location.new(name: name, latitude: latitude, longitude: longitude)
-    @location = Location.new(name: name)
+
+  def create
+    #puts params.inspect
+    # Rails.logger.debug params.inspect
+    # raise params.inspect
+    #render plain: params[:location].inspect
+
+    #name = location_params[:name]
+    # #latitude = params[:latitude]
+    # #longitude = params[:longitude]
+    # #@location = Location.new(name: name, latitude: latitude, longitude: longitude)
+    #@location = Location.new(name: name, latitude: 1.0, longitude: 1.0)
+
+
+    @location = Location.new(location_params)
 
     if @location.save
       flash[:notice] = "Location added!"
-      #render '/home/index'
+      render '/home/index'
     else
       flash[:error] = @location.errors.full_messages.to_sentence
-      #render 'location/locations'
+      render 'location/locations'
     end
   end
+
 
   # def create
   #     pokemonName = pokemon_params[:name]
@@ -43,5 +56,14 @@ class LocationsController < ApplicationController
   #         render 'pokemons/new'
   #     end
   # end
+
+  private
+      # Using a private method to encapsulate the permissible parameters
+      # is just a good pattern since you'll be able to reuse the same
+      # permit list between create and update. Also, you can specialize
+      # this method with per-user checking of permissible attributes.
+      def location_params
+        params.require(:location).permit(:name, :latitude)   #require makes sure key 'location' is in the hash
+      end             #permit returns only two values specified from the hash of values of 'location' key
 
 end
