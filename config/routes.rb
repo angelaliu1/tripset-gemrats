@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get '/location/locations', to: 'locations#show_map', as: 'show_map'
   resources :users
 
+  resources :routes
+  patch '/routes/:id/bookmark', to: 'routes#bookmark', as: 'bookmark'
 end
