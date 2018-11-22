@@ -13,8 +13,8 @@ function initMap() {
     google.maps.event.addListener(searchBox, 'places_changed', processPlacesSearch);
     // google.maps.event.addListener(searchBox, 'place_changed', function() {
     //     var place = searchBox.getPlace();
-    //     console.log(place.name);
-    //     console.log(place.geometry.location.name);
+    //     console.log("hiiiiiiiiiiiiiiiiiiii");
+    //     console.log("hiiiiiiiiiiiiiiiiiiii");
     //     alert('alert');
     //     // Set IP address on hidden field to pass values to controller
     //     //$("#s_ip").val('[' + place.geometry.location.A + ',' + place.geometry.location.F + ']')
@@ -104,7 +104,11 @@ function initMap() {
 
             //$("#s_ip").val('[' + place.geometry.location.A + ',' + place.geometry.location.F + ']')
             //$('#name').val(place.name)
-            document.getElementById("name").value = place.name;
+            console.log("hiiiiiiiiiiiiiiiiiiii");
+            console.log("hiiiiiiiiiiiiiiiiiiii");
+            document.getElementById("location_name").value = place.name;
+            document.getElementById("location_latitude").value = place.geometry.location.lat();
+            console.log(place.geometry.location.lat())
 
 
 

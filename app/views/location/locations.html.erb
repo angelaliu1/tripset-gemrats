@@ -26,6 +26,7 @@
           <!-- hidden_field_tag :place, id: "name" %>-->
           <!--<%= hidden_field_tag 'name' %>-->
           <%= hidden_field(:location, :name) %>
+          <%= hidden_field(:location, :latitude)%>
           <%= submit_tag "Save", class: "btn btn-large btn-primary" %>
       <% end %>
 

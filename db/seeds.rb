@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Make Location
+[['Sather Gate', 1.0, 1.0], ['UCB', 2.0, 2.0]].each do |name, latitude, longitude|
+  Location.create(
+    name: name,
+    latitude: latitude,
+    longitude: longitude
+  )
+end
