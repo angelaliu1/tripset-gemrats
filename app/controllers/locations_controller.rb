@@ -11,17 +11,12 @@ class LocationsController < ApplicationController
 
   def create
     # render plain: params[:location].inspect     #for debuggin purposes
-
     loc_name = location_params[:name]
     lat = location_params[:latitude]
     long = location_params[:longitude]
 
     @location = Location.new(name: loc_name, latitude: lat, longitude: long)
-    # # # @location = Location.new(params)
-    #
-    #
-    # # @location = Location.new(location_params)
-    #
+
     if @location.save!
       flash[:notice] = "Location added!"
       render 'location/locations'
@@ -37,7 +32,6 @@ class LocationsController < ApplicationController
       #permit returns only two values specified from the hash of values of 'location' key
       def location_params
         params.require(:location).permit(:name, :latitude, :longitude)
-        # params.permit(:name, :latitude, :longitude)
       end
 
 end
