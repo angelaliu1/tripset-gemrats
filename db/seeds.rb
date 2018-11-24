@@ -12,7 +12,7 @@
     review: review,
     rating: rand(1..5),
     user_id: 1
-  )
+    )
 
 # Make Location
 [['Sather Gate', 1.0, 1.0], ['UCB', 2.0, 2.0]].each do |name, latitude, longitude|

@@ -6,6 +6,10 @@ class LocationsController < ApplicationController
 
   end
 
+  def new
+      @Location = Location.new
+  end
+
   def show_map
     render '/location/locations'
   end
@@ -37,4 +41,5 @@ class LocationsController < ApplicationController
       def location_params
         params.require(:location).permit(:name, :latitude, :longitude)
       end
+
 end

@@ -5,6 +5,7 @@ var defaultLocation = "San Francisco";
 
 function initMap() {
     geocoder = new google.maps.Geocoder();
+
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12, disableDoubleClickZoom: true
     });
