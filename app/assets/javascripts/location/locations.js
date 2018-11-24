@@ -20,7 +20,6 @@ function initMap() {
           var bounds = new google.maps.LatLngBounds();
           // Get location's info
           var place = autocomplete.getPlace();
-
           document.getElementById("location_name").value = place.name;
           document.getElementById("location_latitude").value = place.geometry.location.lat();
           document.getElementById("location_longitude").value = place.geometry.location.lng();
@@ -29,15 +28,15 @@ function initMap() {
                 map: map,
                 title: place.name,
                 position: place.geometry.location
-                });
+          });
 
           if (place.geometry.viewport) {
-                bounds.union(place.geometry.viewport);
+              bounds.union(place.geometry.viewport);
           } else {
-                bounds.extend(place.geometry.location);
+              bounds.extend(place.geometry.location);
           }
           map.fitBounds(bounds);
-    });
+      });
 
     // find user's geolocation, center map on it
     if (navigator.geolocation) {
