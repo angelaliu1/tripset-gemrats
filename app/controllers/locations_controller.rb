@@ -6,10 +6,6 @@ class LocationsController < ApplicationController
 
   end
 
-  def new
-      @Location = Location.new
-  end
-
   def show_map
     render '/location/locations'
   end
@@ -17,6 +13,7 @@ class LocationsController < ApplicationController
 
   def create
     # render plain: params[:location].inspect     #for debuggin purposes
+
     loc_name = location_params[:name]
     lat = location_params[:latitude]
     long = location_params[:longitude]
@@ -32,6 +29,7 @@ class LocationsController < ApplicationController
     end
   end
 
+
   private
       # A private method to encapsulate the permissible parameters
       #require makes sure key 'location' is in the hash
@@ -39,5 +37,4 @@ class LocationsController < ApplicationController
       def location_params
         params.require(:location).permit(:name, :latitude, :longitude)
       end
-
 end
