@@ -19,13 +19,18 @@
 </head>
 
 <body>
-      <div id="map"></div>
+      <!-- Form to save location into db -->
+      <%= form_tag save_location_path do %>
+          <%= hidden_field(:location, :name) %>
+          <%= hidden_field(:location, :latitude)%>
+          <%= hidden_field(:location, :longitude)%>
+          <%= submit_tag "Save location", class: "btn btn-large btn-primary" %>
+      <% end %>
 
-      <script>
-        //var map;
-        //initMap();
-      </script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWZAP4gaHmcpY04d6dVYmqWg4zwCvRTrY&callback=initMap" async defer></script>
+      <div id="map"></div>
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBXzcgwL4SR4Pub-rXaTbGifuux-QbKoEA&callback=initMap" async defer></script>
 
       <footer class="footer">
         <p>© GemRats 2018</p>
