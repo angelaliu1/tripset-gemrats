@@ -1,32 +1,68 @@
 //= require jquery
+var map, searchBox, geocoder, place;
+//set San Francisco as default location
+var defaultLocation = "San Francisco";
 
 function initMap() {
-    var map;
+    geocoder = new google.maps.Geocoder();
+
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 37.77, lng: -122.43}, zoom: 12
+      zoom: 12, disableDoubleClickZoom: true
     });
-    infoWindow = new google.maps.InfoWindow;
 
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
+    //add search box to the map
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(document.getElementById('pac-input'));
+    var defaultBounds = new google.maps.LatLngBounds();
+    var options = {bounds: defaultBounds};
+    var input = document.getElementById('pac-input');
+    var autocomplete  = new google.maps.places.Autocomplete(input, options);
+    autocomplete.addListener('place_changed', function() {
+          var bounds = new google.maps.LatLngBounds();
+          // Get location's info
+          var place = autocomplete.getPlace();
+          document.getElementById("location_name").value = place.name;
+          document.getElementById("location_latitude").value = place.geometry.location.lat();
+          document.getElementById("location_longitude").value = place.geometry.location.lng();
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Location found.');
-        infoWindow.open(map);
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
+          var marker = new google.maps.Marker({
+                map: map,
+                title: place.name,
+                position: place.geometry.location
+          });
+
+          if (place.geometry.viewport) {
+              bounds.union(place.geometry.viewport);
+          } else {
+              bounds.extend(place.geometry.location);
+          }
+          map.fitBounds(bounds);
       });
+
+    // find user's geolocation, center map on it
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          map.setCenter(pos);
+        }, function() {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
     } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
+        //center map to default position
+        var lat, lng, coords;
+        geocoder.geocode({ 'address': defaultPlace }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                latitude = results[0].geometry.location.lat();
+                longitude = results[0].geometry.location.lng();
+                coords = {lat: latitude, lng: longitude};
+            }
+        });
+        map.center(defaultPosititon);
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
     }
-    var marker = new google.maps.Marker({position: {lat: 37.77, lng: -122.43}, map: map});
   }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
