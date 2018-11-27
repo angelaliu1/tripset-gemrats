@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :users
   resources :reviews
 
+  resources :routes
+  patch '/routes/:id/bookmark', to: 'routes#bookmark', as: 'bookmark'
 end

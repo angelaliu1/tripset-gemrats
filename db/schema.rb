@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_212531) do
+ActiveRecord::Schema.define(version: 2018_11_22_072019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "route_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["route_id"], name: "index_bookmarks_on_route_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
@@ -25,6 +34,11 @@ ActiveRecord::Schema.define(version: 2018_11_21_212531) do
     t.index ["review_id"], name: "index_locations_on_review_id"
   end
 
+  create_table "locations_routes", id: false, force: :cascade do |t|
+    t.bigint "route_id", null: false
+    t.bigint "location_id", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.string "title"
     t.text "review"
@@ -33,6 +47,16 @@ ActiveRecord::Schema.define(version: 2018_11_21_212531) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string "title"
+    t.string "city"
+    t.integer "upvotes"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_routes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,5 +71,8 @@ ActiveRecord::Schema.define(version: 2018_11_21_212531) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookmarks", "routes"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "locations", "reviews"
+  add_foreign_key "routes", "users"
 end
