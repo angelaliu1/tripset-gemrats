@@ -6,19 +6,18 @@
     <tr>
       <th>Route Name</th>
       <th>Owner</th>
+      <th>City</th>
+      <th>Upvotes</th>
       <th>Link to Route</th>
     </tr>
     <tbody>
-      <% Route.all.each do |r| %>
+      <% @routes.each do |r| %>
         <tr>
-          <td><%= r.title %></td>
-          <td><%= @users.where(id: r.user_id) %></td>
-          <td>link</td>
+          <%= render r %>
         </tr>
       <% end %>
     </tbody>
   </table>
 <% else %>
   <h3>Add a route!</h3>
-
 <% end %>
