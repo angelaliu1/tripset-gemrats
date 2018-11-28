@@ -7,10 +7,9 @@
       <div class="container" style="">
         <img src="" style="" width="128" height="128">
 
-        <%= button_to "Temporary button to test", show_map_path(), :class => "button medium", :method => :get %>
-
         <% if user_signed_in? %>
-            <p><%= link_to 'Profile', users_path %></p>
+            <%= button_to "Add Location", show_map_path(), :class => "button medium", :method => :get %>
+            <%= button_to "Profile", users_path(), :class => "button medium", :method => :get %>
             <%= button_to('Logout', destroy_user_session_path, method: :delete) %>
         <% else %>
           <%= button_to('Login', new_user_session_path)  %>
