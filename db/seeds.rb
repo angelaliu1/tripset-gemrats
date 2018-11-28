@@ -22,4 +22,12 @@
     longitude: longitude
   )
 
+# Make Route
+[['SF', 'San Francisco', 1], ['Berk', 'Berkeley', 2]].each do |title, city, user_id|
+  Route.create(
+    title: title,
+    city: city,
+    user_id: user_id
+  )
+
 end
