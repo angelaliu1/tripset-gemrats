@@ -1,3 +1,3 @@
 class Review < ApplicationRecord
-  # belongs_to :location, optional: true
+  belongs_to :route, optional: true
 end
