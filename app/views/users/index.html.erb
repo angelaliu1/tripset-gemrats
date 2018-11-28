@@ -3,6 +3,27 @@
 <% if @user.id == current_user.id %>
     <p>Email: <%= @user.email if @user.email %></p>
     <p>User ID: <%= @user.id if @user.id %></p>
+
+    <div class="row">
+    <h3>Routes</h3>
+    <div class="column">
+      <table class="table">
+        <tbody>
+            <tr>
+                <td>Title</td>
+                <td>City</td>
+                <td>Upvotes</td>
+            </tr>
+          <% @routes.each do |route| %>
+            <tr>
+              <%= render route %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
     <div class="row">
     <h3>Reviews</h3>
     <div class="column">
@@ -22,24 +43,4 @@
       </table>
     </div>
   </div>
-
-  <div class="row">
-  <h3>Routes</h3>
-  <div class="column">
-    <table class="table">
-      <tbody>
-          <tr>
-              <td>Title</td>
-              <td>City</td>
-              <td>Upvotes</td>
-          </tr>
-        <% @routes.each do |route| %>
-          <tr>
-            <%= render route %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
 <% end %>
