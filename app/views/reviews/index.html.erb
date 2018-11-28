@@ -2,12 +2,12 @@
 <!-- <p>Find me in app/views/reviews/index.html.erb</p> -->
 
 <h1>Create a review!</h1>
-<%= form_with local: true, method: "get" do |form| %>
+<%= form_with local: true, :url => create_path, method: "post" do |form| %>
 	Title:<br>
 	<%= form.text_field :title %> <br>
 	<br>
-	Body: <br>
-	<%= form.text_field :body %>
+	Review: <br>
+	<%= form.text_field :review, :size => 150 %>
 	<br>
 	<br>
 	<%= form.submit "Publish Review" %>
