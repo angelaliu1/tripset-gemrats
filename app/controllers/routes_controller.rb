@@ -18,7 +18,6 @@ class RoutesController < ApplicationController
   end
 
   def create
-    params.permit(:title)
     @route = Route.new(route_params)
 		@route.upvotes = 0
 		@route.user_id = current_user.id
@@ -31,6 +30,11 @@ class RoutesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    route = Route.find(params[:id])
+    
   end
 
   def bookmark

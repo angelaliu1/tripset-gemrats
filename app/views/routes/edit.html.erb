@@ -1,2 +1,7 @@
 <h1>Routes#edit</h1>
 <p>Find me in app/views/routes/edit.html.erb</p>
+
+<%= form_for @route do |f| %>
+  <p>Title: <%= f.text_field :title %></p>
+	<%= f.submit "Continue" %>
+<% end %>
