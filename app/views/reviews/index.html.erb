@@ -1,0 +1,14 @@
+<!-- <h1>Reviews#index</h1> -->
+<!-- <p>Find me in app/views/reviews/index.html.erb</p> -->
+
+<h1>Create a review!</h1>
+<%= form_with local: true, method: "get" do |form| %>
+	Title:<br>
+	<%= form.text_field :title %> <br>
+	<br>
+	Body: <br>
+	<%= form.text_field :body %>
+	<br>
+	<br>
+	<%= form.submit "Publish Review" %>
+<% end %>
