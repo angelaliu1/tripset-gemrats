@@ -1,3 +1,24 @@
-<h1>Routes#index</h1>
 <p>Find me in app/views/routes/index.html.erb</p>
-<%-#= link_to "Bookmark (#{Route.users_bookmarked.length})", bookmark_path(route), method: :patch %-%>
+
+<h1>Explore</h1>
+<% if not @routes.nil? %>
+  <table style="width:100%">
+    <tr>
+      <th>Route Name</th>
+      <th>Owner</th>
+      <th>City</th>
+      <th>Upvotes</th>
+      <th>Link to Route</th>
+    </tr>
+    <tbody>
+
+      <% @routes.each do |r| %>
+        <tr>
+          <%= render r %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3>Add a route!</h3>
+<% end %>

@@ -18,6 +18,14 @@
     rating: rand(1..5),
     user_id: 1
     )
+  end
+
+#make users
+[['abc@gmail.com'], ['xyz@gmail.com']].each do |email|
+  User.create(
+    email: email,
+    password: "123456"
+  )
 end
 
 # Make Location
@@ -44,3 +52,12 @@ end
         user_id: 1
     )
 end
+
+# Make Location
+ [['Sather Gate', 1.0, 1.0], ['UCB', 2.0, 2.0]].each do |name, latitude, longitude|
+    Location.create(
+      name: name,
+      latitude: latitude,
+      longitude: longitude
+    )
+  end
