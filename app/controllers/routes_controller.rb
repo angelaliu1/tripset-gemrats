@@ -1,7 +1,6 @@
 class RoutesController < ApplicationController
   def index
     # explore all routes
-    @users = User.all
     @routes = Route.all
 
   end
