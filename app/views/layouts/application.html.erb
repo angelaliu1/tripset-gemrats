@@ -12,13 +12,16 @@
   <body>
     <div class="container">
           <h3 class="text-muted">TripSet</h3>
-          <li class="nav-item">
-            <!--<a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>-->
-            <!--<%= button_to "Temporary button to test", show_map_path(), :class => "button medium", :method => :get %>-->
-            <%= button_to "Home", root_path(), :class => "button medium", :method => :get %>
-          </li>
-          <li class="nav-item">
-            <!--<a class="nav-link" href="#">About</a>-->
+
+          <div style="float:left;">
+              <%= button_to "Home", root_path(), :class => "button medium", :method => :get %>
+          </div>
+          <div style="float:left;">
+              <%= button_to 'Profile', :root, :class => 'button' %>             <!--Change path to profile here!!! -->
+          </div>
+          <%= button_to 'Explore', :root, :class => 'button' %>              <!--Change path to explore here!!! -->
+
+          <li>
           </li>
     </div>
     <%= yield %>

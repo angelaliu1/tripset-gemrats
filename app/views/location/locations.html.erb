@@ -19,16 +19,19 @@
 </head>
 
 <body>
-      <!-- Form to save location into db -->
+      <!-- Hidden form to save location into db -->
       <%= form_tag save_location_path do %>
           <%= hidden_field(:location, :name) %>
           <%= hidden_field(:location, :latitude)%>
           <%= hidden_field(:location, :longitude)%>
-          <%= submit_tag "Save location", class: "btn btn-large btn-primary" %>
+          <div style="float:left;">
+              <%= submit_tag "Save location", class: "btn btn-large btn-primary" %>
+          </div>
+          <%= button_to 'Publish route', :root, :class => 'button' %>          <!--Change path to finalize route here!!! -->
       <% end %>
 
       <div id="map"></div>
-      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+      <input id="pac-input" class="controls" type="text" placeholder="Find location">
 
       <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBXzcgwL4SR4Pub-rXaTbGifuux-QbKoEA&callback=initMap" async defer></script>
 
