@@ -6,7 +6,10 @@ class RoutesController < ApplicationController
 
   def show
     # view own routes
-    @user = User.find(params[:id])
+    @curUser = current_user
+    # @user = User.find(params[:id])
+    @route = Route.find(params[:id])
+    redirect_to '/routes/'+@route.to_s
   end
 
   def new
