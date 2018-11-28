@@ -6,7 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-[['Meep', 'meep'], ['Meep', 'meep'], ['Meep', 'meep'], ['Meep', 'meep']].each do |title, review, rating|
+[
+    ['Meep', 'meep'],
+    ['Meep', 'meep'],
+    ['Meep', 'meep'],
+    ['Meep', 'meep']
+].each do |title, review, rating|
   Review.create(
     title: title,
     review: review,
@@ -17,21 +22,36 @@
 
 #make users
 [['abc@gmail.com'], ['xyz@gmail.com']].each do |email|
-  User.create!(
+  User.create(
     email: email,
     password: "123456"
   )
 end
 
-# Make Route
- [['SF', 'San Francisco'], ['Berk', 'Berkeley']].each do |title, city|
-    Route.create!(
-      title: title,
-      city: city,
-      user_id: 1,
-      upvotes: 0
+# Make Location
+[
+    ['Sather Gate', 1.0, 1.0],
+    ['UCB', 2.0, 2.0]
+].each do |name, latitude, longitude|
+  Location.create(
+    name: name,
+    latitude: latitude,
+    longitude: longitude
+  )
+end
+
+[
+    ['meep', 'Inverness, CA', 87],
+    ['meep', 'Point Reyes Station, CA', 68],
+    ['meep', 'Berkeley, CA', 52]
+].each do |title, city, upvotes|
+    Route.create(
+        title: title,
+        city: city,
+        upvotes: upvotes,
+        user_id: 1
     )
-  end
+end
 
 # Make Location
  [['Sather Gate', 1.0, 1.0], ['UCB', 2.0, 2.0]].each do |name, latitude, longitude|

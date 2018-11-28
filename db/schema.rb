@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_072019) do
+ActiveRecord::Schema.define(version: 2018_11_28_203958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,11 @@ ActiveRecord::Schema.define(version: 2018_11_22_072019) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
-    t.decimal "latitude"
-    t.decimal "longitude"
-    t.bigint "review_id"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_locations_on_review_id"
+    t.integer "routeid"
   end
 
   create_table "locations_routes", id: false, force: :cascade do |t|
@@ -73,6 +72,5 @@ ActiveRecord::Schema.define(version: 2018_11_22_072019) do
 
   add_foreign_key "bookmarks", "routes"
   add_foreign_key "bookmarks", "users"
-  add_foreign_key "locations", "reviews"
   add_foreign_key "routes", "users"
 end
