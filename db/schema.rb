@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_11_28_203958) do
 
   create_table "routes", force: :cascade do |t|
     t.string "title"
-    t.string "city"
+    t.string "description"
     t.integer "upvotes"
     t.bigint "user_id"
     t.datetime "created_at", null: false
