@@ -1,4 +1,4 @@
-<h3>Profile</h3>
+<h2>Profile</h2>
 <% if @user.id == current_user.id %>
     <p>Email: <%= @user.email if @user.email %></p>
     <p>User ID: <%= @user.id if @user.id %></p>
@@ -7,6 +7,11 @@
     <div class="column">
       <table class="table">
         <tbody>
+            <tr>
+                <td>Title</td>
+                <td>Review</td>
+                <td>Rating</td>
+            </tr>
           <% @reviews.each do |review| %>
             <tr>
               <%= render review %>
@@ -17,18 +22,23 @@
     </div>
   </div>
 
-  <!-- <div class="row">
+  <div class="row">
   <h3>Routes</h3>
   <div class="column">
     <table class="table">
       <tbody>
-        <%# @routes.each do |route| %>
           <tr>
-            <%#= render route %>
+              <td>Title</td>
+              <td>City</td>
+              <td>Upvotes</td>
+          </tr>
+        <% @routes.each do |route| %>
+          <tr>
+            <%= render route %>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
-</div> -->
-<%# end %>
+</div>
+<% end %>
