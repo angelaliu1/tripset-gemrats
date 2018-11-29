@@ -6,11 +6,20 @@
 
     <div class="banner">
     <div class="container"><!-- Your 960 grid -->
-        <div class="six columns">
+       <div class="row">
+         <div class="six columns offset-by-three">
+          <div class="herotext">
+            City routes by locals and travellers
+
+            <% if user_signed_in? %>
+            <%= button_to "Get Started", new_route_path, :class => "button button-primary", :method => :get %>
+            <% end %>
+          </div>
         </div>
     </div>
 </div>
-
+</div>
+  
       <div class="container" style="">
 
         <% if user_signed_in? %>
@@ -21,10 +30,5 @@
         <% end %>
 
       </div>
-
-      <footer class="footer">
-        <p>© GemRats 2018</p>
-      </footer>
-
 </body>
 </html>

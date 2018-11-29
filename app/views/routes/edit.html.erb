@@ -1,2 +1,50 @@
-<h1>Routes#edit</h1>
-<p>Find me in app/views/routes/edit.html.erb</p>
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 80%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 10;
+        padding: 0;
+      }
+    </style>
+    <script src="/routes.js"></script>
+</head>
+
+<body>
+      <h3>Title: <%= @route.title %></h3>
+      <%= form_with model: @route do |f| %>
+          <p>Title: <%= f.text_field :title, value: @route.title %></p>
+          <p>Description: <%= f.text_area(:description, size: "40x3", placeholder: "Description", value: @route.description) %></p>
+          <%= f.submit "Publish route" %>
+      <% end %>
+
+      <%= form_tag save_location_path do %>
+          <%= hidden_field(:location, :name) %>
+          <%= hidden_field(:location, :latitude)%>
+          <%= hidden_field(:location, :longitude)%>
+          <%= hidden_field(:location, :routeid, :value => @route.id)%>
+          <%= submit_tag "Add this location", class: "btn btn-large btn-primary" %>
+      <% end %>
+
+      <div id="map"></div>
+      <input id="pac-input" class="controls" type="text" placeholder="Find location">
+      <script type="text/javascript">
+          var json_loc = JSON.parse('<%= raw(escape_javascript(@locations)) %>');
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBXzcgwL4SR4Pub-rXaTbGifuux-QbKoEA&callback=initMap" async defer></script>
+
+
+      <footer class="footer">
+        <p>© GemRats 2018</p>
+      </footer>
+
+</body>
+</html>

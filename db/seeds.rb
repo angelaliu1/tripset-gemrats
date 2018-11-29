@@ -44,10 +44,10 @@ end
     ['meep', 'Inverness, CA', 87],
     ['meep', 'Point Reyes Station, CA', 68],
     ['meep', 'Berkeley, CA', 52]
-].each do |title, city, upvotes|
+].each do |title, description, upvotes|
     Route.create(
         title: title,
-        city: city,
+        description: description,
         upvotes: upvotes,
         user_id: 1
     )
