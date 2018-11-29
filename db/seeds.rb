@@ -36,7 +36,8 @@ end
   Location.create(
     name: name,
     latitude: latitude,
-    longitude: longitude
+    longitude: longitude,
+    routeid: 1
   )
 end
 
