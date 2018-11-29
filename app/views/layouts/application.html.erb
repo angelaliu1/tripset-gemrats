@@ -5,24 +5,41 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'skeleton', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'normalize', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+<body>
+    <header>
     <div class="container">
-          <h3 class="text-muted">TripSet</h3>
+    
+    <div id="nav">
 
-          <div style="float:left;">
-              <%= button_to "Home", root_path(), :class => "button medium", :method => :get %>
-          </div>
-          <% if user_signed_in? %>
-          <div style="float:left;">
-              <%= button_to "Profile", users_path(), :class => "button medium", :method => :get %>
-          </div>
-          <% end %>
-          <%= button_to 'Explore', :root, :class => 'button' %>              <!--Change path to explore here!!! -->
+    <a class="brand" href="/">Tripset.</a>
+
+    <ul>
+        <li class="menu-item"><%= link_to "Home", root_path() %></li>
+        <li class="menu-item"><%= link_to "Profile", users_path() %></li>
+        <% if user_signed_in? %>
+        <li class="menu-item"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+        <% else %>
+        <li class="menu-item"><%= link_to "Login", new_user_session_path() %></li>
+        <% end %>
+
+      </ul>
+  </div>
+
     </div>
+
+    </header>
+  </div>
+
     <%= yield %>
   </body>
 </html>
