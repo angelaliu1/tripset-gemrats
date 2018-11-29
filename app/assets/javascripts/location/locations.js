@@ -72,3 +72,13 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                           'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
   }
+
+function addMarker(name, lat, lon) {
+    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(lat, lon),
+                        map: map,
+                        title: name,
+                        animation: google.maps.Animation.DROP,
+                    });
+    marker.setMap(map);
+}
