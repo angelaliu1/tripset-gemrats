@@ -1,45 +1,117 @@
-# tripset
-gemrats
+# Tripset
 
-## Commandments of using Git
-- Always create local branch. Never commit/push to master
-- Create a new branch when starting on something new, even if its a bug fix
-- Create a pull request for your branch when you want to merge to master (remote repo)
-- DO NOT merge directly-> WAIT for peer review of pull request before merge
-- Always test and make sure code/component in working satisfactorily before merging to master
-- Use git 'rebase'
-- Please, do not edit directly on remote repo through the UI
-- Put good commit descriptions
-- Use consistent variable naming and comments
+**Team Members:** Angela Liu, Victor Grajski, Candice Ye, Daphne Jong, Dmytro Khelemendyk, Jennifer Grannen
 
-### Git commit sequence
-1. `git status`
-2. `git add .`
-3. `git status`
-4. `git commit -m 'commitMessage'`
+**Prompt:** Come Up With Your Own Prompt!
 
-### Git rebase sequence
-1. `git checkout master`
-2. `git pull`
-3. `git checkout branchName`
-4. `git rebase master`
-5. In case of merge conflicts, fix them, then `git add .`, `git merge --continue`. [If you want to abort rebasing, use `git rebase --abort`]
-6. `git push -f origin branchName` (force push, be carefull)
+## **Abstract**
 
-## Freqently used git commands
-- Pulling a repo/master: `git pull`
-- Creating a branch: `git checkout -b yourInitials_branchName`
-- Looking at branches/current branch: `git branch` (* = branch you are on )
-- Moving from branch-to-branch:  `git checkout branchToMoveTo`
-- Rebase(move to your branch first): `git rebase master`
-- Pushing branch to remote: `git push origin branchName`
-- Pushing branch after rebase: `git push -f origin branchName` (force push, be carefull)
-- Deleting branch: `git branch -D branchName`
+**Tripset** is a tool for people who want to explore the hottest spots in their (or any) city! Users can create routes and post them to a public map, search for routes created by other users, and bookmark their favorite routes before they embark on their adventures.
 
-## Nuclear buttons - think before using
-- Merging a pull request-> Don't merge untested, unreveiewed code. Creates a headache for people working independently
-- Force push (`git push -f branchName`) -> Please dont force push master :D it can/will delete the good, awesome, working code in remote. If you have done this, tell teammates to upload a pristine version of master
+## **Models:**
 
-## What can you do when you mess up
-- Tell someone, ask for help. Git is hard
-- Delete local repo and clone again
+**User**
+
+- Username
+- Email
+- Password
+- List of Route IDs
+- List of Bookmarked Routes
+- List of Reviews
+
+**Routes (Trip plan) - Itinerary**
+
+- Title
+- City
+- List of Categories
+- Route ID
+- Upvotes
+- User (Owner)
+- List of pins (has and belongs to many, join table)
+- Editable by owner
+- Deletable by owner
+- Bookmarked by (routes has many users through: bookmarks? Then need bookmarks model as join)
+
+**Pin (Location)**
+
+- Name
+- Location Coordinates
+- Reviews
+- List of Categories
+- Photo of place
+- Hours
+- Routes that the pin is used in
+
+**Reviews**
+
+- User (Owner)
+- Route
+- Title
+- Rating
+- Content
+
+**Category**
+
+- Name
+- List of pins that fall under category
+- List of routes that fall under category
+
+## **Relationships:**
+
+- Many-to-many: Routes contain pins, pins assigned to routes
+- One-to-many: Users own many routes
+- One-to-many: Users own many bookmarks
+- One-to-many: Users own many reviews
+- One-to-many: Pins have many categories (many-to-many?)
+- One-to-many: Routes have many categories (many-to-many?)
+
+## **Features:**
+
+- Log in/log out
+- Create a route
+- Edit your route
+- Delete your route
+- Search a route
+- Upvote/downvote routes
+- User profile
+
+## **Division of Labor:**
+
+- Angela: Routes Model
+- Victor: Users Model
+- Candice: Reviews Model
+- Daphne: Views - UI/UX, Front-End Design and Development
+- Dmytro: Locations Model
+- Jennifer: Routes Model
+
+# Requirements
+
+- [] At least 2 complete features in the app (must be approved by TA)
+  - A feature is one useful thing you can use the app to do
+  - Features can be complementary to each other but they must be differentiable in their implementation (try to demonstrate as much knowledge of Rails as possible!)
+- [X] At least 4 models in the app
+- [X] At least 2 model relationships in the app
+  - [X] At least 1 of those must be a complex relationship (like many-to-many, self-join, polymorphic, etc.)
+- [] Must have a database seeds (db/seeds.rb) file
+- [] Must submit a writeup in the README.md file
+- [X] Must have an equal division of labor (data will be collected through a survey)
+- [] Your server must launch with no errors when you run whales server
+- [] Must implement at least 15 points worth of ambition features
+
+## **Ambition Features (15 points required)**
+
+- [] Provide a web-hook for others to consume (15 points)
+- [?] Use React as a front-end framework served by Rails (15 points)
+- [] Utilize ActionCable to have a real-time feature (15 points)
+- [] Integration of some non-trivial javascript libraries (10 points)
+- [] Interact with an API that provides a service (Stripe, Lob, etc.) (10 points)
+- [] Implement a non-trivial gem not talked about in class to enhance your application (10 points)
+  - Devise, Faker, rails-admin, and Faraday don&#39;t count!
+- [X] Consume data from an external API (5 points)
+- [X] Use Devise in your application (5 points)
+- [] React to a web-hook of some kind (5 points)
+- [X] Host on a website like Heroku (5 points)
+- [X] Have some styling to make the app prettier (5 points)
+- [] Use Rails Partials to organize your UI (5 points)
+- [] Literally do nothing. We&#39;ll flip three coins to see if you get these points (12.5% chance: 5 points)
+- [] Literally do nothing. If you&#39;re the only team that specifies this ambition feature in your project writeup, you&#39;ll get the points. (15 points)
