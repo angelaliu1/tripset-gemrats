@@ -4,6 +4,7 @@ var map, searchBox, geocoder, place;
 var defaultLocation = "San Francisco";
 
 function initMap() {
+    var bounds = new google.maps.LatLngBounds();
     geocoder = new google.maps.Geocoder();
 
     map = new google.maps.Map(document.getElementById('map'), {
@@ -17,7 +18,7 @@ function initMap() {
     var input = document.getElementById('pac-input');
     var autocomplete  = new google.maps.places.Autocomplete(input, options);
     autocomplete.addListener('place_changed', function() {
-          var bounds = new google.maps.LatLngBounds();
+          // var bounds = new google.maps.LatLngBounds();
           // Get location's info
           var place = autocomplete.getPlace();
           document.getElementById("location_name").value = place.name;
@@ -63,6 +64,32 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
+
+    // var bounds = new google.maps.LatLngBounds();
+    for(var i = 0; i < json_loc.length; i++){
+         var marker = new google.maps.Marker({
+             position: new google.maps.LatLng(json_loc[i].latitude, json_loc[i].longitude),
+             title: json_loc[i].name,
+             map: map
+         });
+         //extend the bounds to include each marker's position
+          bounds.extend(marker.position);
+
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              infowindow.setContent(locations[i][0]);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+     }
+
+     //now fit the map to the newly inclusive bounds
+     map.fitBounds(bounds);
+
+    //  var listener = google.maps.event.addListener(map, "idle", function () {
+    //     map.setZoom(4);
+    //     google.maps.event.removeListener(listener);
+    // });
   }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -72,13 +99,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                           'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
   }
-
-function addMarker(name, lat, lon) {
-    var marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(lat, lon),
-                        map: map,
-                        title: name,
-                        animation: google.maps.Animation.DROP,
-                    });
-    marker.setMap(map);
-}

@@ -1,2 +1,6 @@
-<h1>Routes#create</h1>
-<p>Find me in app/views/routes/create.html.erb</p>
+<h1>Create a new itinerary</h1>
+
+<%= form_for @route do |f| %>
+  <p>Title: <%= f.text_field :title %></p>
+	<%= f.submit "Continue" %>
+<% end %>
