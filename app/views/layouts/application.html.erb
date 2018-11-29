@@ -30,7 +30,7 @@
         <% if user_signed_in? %>
         <li class="menu-item"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         <% else %>
-        <li class="menu-item"><%= link_to "Login", new_user_session_path() %></li>
+        <li class="menu-item"><%= link_to "Sign Up/Log In", new_user_session_path() %></li>
         <% end %>
 
       </ul>
