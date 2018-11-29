@@ -16,21 +16,22 @@ class LocationsController < ApplicationController
 
 
   def create
-    # render plain: params[:location].inspect     #for debuggin purposes
+     #render plain: params.inspect     #for debuggin purposes
 
-    loc_name = location_params[:name]
-    lat = location_params[:latitude]
-    long = location_params[:longitude]
+      loc_name = location_params[:name]
+      lat = location_params[:latitude]
+      long = location_params[:longitude]
+      route_id = location_params[:routeid]
 
-    @location = Location.new(name: loc_name, latitude: lat, longitude: long)
+      @location = Location.new(name: loc_name, latitude: lat, longitude: long, routeid: route_id)
 
-    if @location.save!
-      flash[:notice] = "Location added!"
-      render 'location/locations'
-    else
-      flash[:error] = @location.errors.full_messages.to_sentence
-      render '/home/index'
-    end
+      if @location.save!
+        flash[:notice] = "Location added!"
+        redirect_to edit_route_path(@location.routeid)
+      else
+        flash[:error] = @location.errors.full_messages.to_sentence
+        render '/home/index'
+      end
   end
 
 
@@ -39,7 +40,7 @@ class LocationsController < ApplicationController
       #require makes sure key 'location' is in the hash
       #permit returns only two values specified from the hash of values of 'location' key
       def location_params
-        params.require(:location).permit(:name, :latitude, :longitude)
+        params.require(:location).permit(:name, :latitude, :longitude, :routeid)
       end
 
 end

@@ -12,7 +12,7 @@
             City routes by locals and travellers
 
             <% if user_signed_in? %>
-            <%= button_to "Get Started", show_map_path(), :class => "button button-primary", :method => :get %>
+            <%= button_to "Get Started", new_route_path, :class => "button button-primary", :method => :get %>
             <% end %>
           </div>
         </div>
@@ -20,7 +20,7 @@
 </div>
 </div>
 
-      
+
 
 </body>
 </html>
