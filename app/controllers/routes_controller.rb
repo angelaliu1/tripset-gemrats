@@ -10,7 +10,9 @@ class RoutesController < ApplicationController
     @curUser = current_user
     # @user = User.find(params[:id])
     @route = Route.find(params[:id])
-    redirect_to '/routes/'+@route.to_s
+    @locations = Location.where(routeid: @route.id).to_json
+    #redirect_to '/routes/'+@route.to_s
+    #redirect_to route_path(params[:id])
   end
 
   def new
@@ -34,7 +36,7 @@ class RoutesController < ApplicationController
 
   def update
     route = Route.find(params[:id])
-    
+
   end
 
   def bookmark
