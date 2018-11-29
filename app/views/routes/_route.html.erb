@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-<td><%= link_to route.title, route %></td>
-<td><%= route.city %></td>
-<td><%= route.upvotes %></td>
-=======
 <td style="text-align: center"><%= link_to route.title, route %></td>
 <td style="text-align: center"><%= User.where(id: route.user_id).first.email %></td>
 <td style="text-align: center"><%= route.city %></td>
 <td style="text-align: center"><%= route.upvotes %></td>
->>>>>>> finished _routes
