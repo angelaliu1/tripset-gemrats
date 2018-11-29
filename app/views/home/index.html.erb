@@ -4,8 +4,14 @@
 
 <body>
 
+    <div class="banner">
+    <div class="container"><!-- Your 960 grid -->
+        <div class="six columns">
+        </div>
+    </div>
+</div>
+
       <div class="container" style="">
-        <img src="" style="" width="128" height="128">
 
         <% if user_signed_in? %>
             <%= button_to "Add Location", show_map_path(), :class => "button medium", :method => :get %>
