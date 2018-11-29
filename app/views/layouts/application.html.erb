@@ -18,13 +18,14 @@
 <body>
     <header>
     <div class="container">
-    
+
     <div id="nav">
 
     <a class="brand" href="/">Tripset.</a>
 
     <ul>
         <li class="menu-item"><%= link_to "Home", root_path() %></li>
+        <li class="menu-item"><%= link_to "Explore", routes_path() %></li>
         <li class="menu-item"><%= link_to "Profile", users_path() %></li>
         <% if user_signed_in? %>
         <li class="menu-item"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
@@ -50,4 +51,3 @@
         </footer>
   </body>
 </html>
-
