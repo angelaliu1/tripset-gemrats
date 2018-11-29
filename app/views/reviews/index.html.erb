@@ -3,10 +3,15 @@
 
 <h1>Create a review!</h1>
 <%= form_with local: true, :url => create_path, method: "post" do |form| %>
-	Title:<br>
+	<b>Title:</b><br>
 	<%= form.text_field :title %> <br>
 	<br>
-	Review: <br>
+	<b>Rating:</b><br>
+	Rate this route 1 through 5, with 5 meaning Perfect!<br>
+	<%= form.text_field :rating %> <br>
+	<br>
+	<b>Review:</b> <br>
+	Tell us what you thought!<br>
 	<%= form.text_field :review, :size => 150 %>
 	<br>
 	<br>
