@@ -30,14 +30,12 @@
           <%= button_to 'Publish route', :root, :class => 'button' %>          <!--Change path to finalize route here!!! -->
       <% end %>
 
+      <p><input id="pac-input" class="controls" type="text" placeholder="Find location"></p>
+
       <div id="map"></div>
-      <input id="pac-input" class="controls" type="text" placeholder="Find location">
 
       <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBXzcgwL4SR4Pub-rXaTbGifuux-QbKoEA&callback=initMap" async defer></script>
 
-      <footer class="footer">
-        <p>© GemRats 2018</p>
-      </footer>
 
 </body>
 </html>
