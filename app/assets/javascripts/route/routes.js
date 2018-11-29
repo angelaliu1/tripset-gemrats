@@ -83,16 +83,20 @@ function initMap() {
           })(marker, i));
      }
 
-     //now fit the map to the newly inclusive bounds
+     //if markers, fit the map to the newly inclusive bounds
      if (json_loc.length > 0) {
-       map.fitBounds(bounds);
+        map.fitBounds(bounds);
+        var listener = google.maps.event.addListener(map, "idle", function(){
+            map.setOptions({maxZoom: 17});
+            google.maps.event.removeListener(listener);
+        });
+     } else {
+         var listener = google.maps.event.addListener(map, "idle", function () {
+              map.setZoom(12);
+              google.maps.event.removeListener(listener);
+         });
      }
 
-
-    //  var listener = google.maps.event.addListener(map, "idle", function () {
-    //     map.setZoom(4);
-    //     google.maps.event.removeListener(listener);
-    // });
   }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
