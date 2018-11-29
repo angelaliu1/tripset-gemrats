@@ -19,8 +19,16 @@
     </div>
 </div>
 </div>
+  
+      <div class="container" style="">
 
+        <% if user_signed_in? %>
+            <%= button_to "Add Location", show_map_path(), :class => "button medium", :method => :get %>
+            <%= button_to "Add a Review", reviews_path(), :class => "button medium", :method => :get %>
+        <% else %>
+          <%= button_to('Login', new_user_session_path)  %>
+        <% end %>
 
-
+      </div>
 </body>
 </html>
