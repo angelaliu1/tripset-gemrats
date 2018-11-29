@@ -34,6 +34,8 @@
           <%= submit_tag "Add this location", class: "btn btn-large btn-primary" %>
       <% end %>
 
+      <%= button_to "Add a Review", reviews_path(), :class => "button medium", :method => :get %>
+
       <div id="map"></div>
       <input id="pac-input" class="controls" type="text" placeholder="Find location">
       <script type="text/javascript">
