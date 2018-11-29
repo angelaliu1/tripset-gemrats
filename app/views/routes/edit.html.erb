@@ -17,9 +17,10 @@
     </style>
     <script src="/routes.js"></script>
 </head>
+
 <body>
       <h3>Title: <%= @route.title %></h3>
-      <%= form_with model: @route, url: save_location_path do |f| %>
+      <%= form_with model: @route do |f| %>
           <p>Title: <%= f.text_field :title, value: @route.title %></p>
           <p>Description: <%= f.text_area(:description, size: "40x3", placeholder: "Description", value: @route.description) %></p>
           <%= f.submit "Publish route" %>
@@ -35,9 +36,10 @@
 
       <div id="map"></div>
       <input id="pac-input" class="controls" type="text" placeholder="Find location">
-
+      <script type="text/javascript">
+          var json_loc = JSON.parse('<%= raw(escape_javascript(@locations)) %>');
+      </script>
       <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBXzcgwL4SR4Pub-rXaTbGifuux-QbKoEA&callback=initMap" async defer></script>
-
 
 
       <footer class="footer">

@@ -1,4 +1,4 @@
 <td style="text-align: center"><%= link_to route.title, route %></td>
 <td style="text-align: center"><%= User.where(id: route.user_id).first.email %></td>
-<td style="text-align: center"><%= route.city %></td>
+<td style="text-align: center"><%= route.description %></td>
 <td style="text-align: center"><%= route.upvotes %></td>

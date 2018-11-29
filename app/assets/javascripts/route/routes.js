@@ -84,7 +84,10 @@ function initMap() {
      }
 
      //now fit the map to the newly inclusive bounds
-     map.fitBounds(bounds);
+     if (json_loc.length > 0) {
+       map.fitBounds(bounds);
+     }
+
 
     //  var listener = google.maps.event.addListener(map, "idle", function () {
     //     map.setZoom(4);
